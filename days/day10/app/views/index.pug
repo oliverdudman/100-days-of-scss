@@ -1,0 +1,15 @@
+html
+  head
+  link(href="../css/main.css", rel="stylesheet")
+  body
+    div(class="tile")
+      div(class="clock")
+        div(class="clock__inner clock__inner--1")
+        div(class="clock__inner clock__inner--2")
+        div(class="clock__mask clock__mask--1")
+        - for (var x = 1; x <= 36; x++)
+          div(class="clock__markings clock__markings--" + x)
+        div(class="clock__display")
+          div(class="clock__display--labels") MON 15 JAN 2015
+          div(class="clock__display--time") 11:42
+          div(class="clock__display--labels") 1024 KCAL

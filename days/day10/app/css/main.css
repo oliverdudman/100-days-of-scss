@@ -1,0 +1,182 @@
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; }
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 800px;
+  background-color: orange; }
+
+.clock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  border: 8px solid #7575a4;
+  border-radius: 50%;
+  background-color: #33334d; }
+  .clock__inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 95%;
+    height: 95%;
+    border: 5.3333333333px solid red;
+    border-radius: 50%; }
+    .clock__inner--1 {
+      z-index: 2;
+      border-bottom: 5.3333333333px solid transparent;
+      border-left: 5.3333333333px solid transparent;
+      transform: rotate(-135deg);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+      animation: rotate1 5s linear infinite; }
+    .clock__inner--2 {
+      z-index: 1;
+      border-top: 5.3333333333px solid transparent;
+      border-right: 5.3333333333px solid transparent;
+      transform: rotate(45deg);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+      animation: rotate2 5s linear infinite; }
+  .clock__mask {
+    position: absolute;
+    box-sizing: content-box;
+    width: 50%;
+    height: 96%; }
+    .clock__mask--1 {
+      right: 50%;
+      z-index: 2;
+      border-radius: 200px 0px 0px 200px;
+      background-color: #33334d;
+      transform-origin: 100% 50%;
+      transform: rotate(0deg);
+      animation: mask1 5s steps(1) infinite; }
+  .clock__markings {
+    position: absolute;
+    z-index: 10;
+    box-sizing: border-box;
+    width: 88%;
+    height: 88%; }
+    .clock__markings--1 {
+      transform: rotate(10deg); }
+    .clock__markings--2 {
+      transform: rotate(20deg); }
+    .clock__markings--3 {
+      transform: rotate(30deg); }
+    .clock__markings--4 {
+      transform: rotate(40deg); }
+    .clock__markings--5 {
+      transform: rotate(50deg); }
+    .clock__markings--6 {
+      transform: rotate(60deg); }
+    .clock__markings--7 {
+      transform: rotate(70deg); }
+    .clock__markings--8 {
+      transform: rotate(80deg); }
+    .clock__markings--9 {
+      transform: rotate(90deg); }
+    .clock__markings--10 {
+      transform: rotate(100deg); }
+    .clock__markings--11 {
+      transform: rotate(110deg); }
+    .clock__markings--12 {
+      transform: rotate(120deg); }
+    .clock__markings--13 {
+      transform: rotate(130deg); }
+    .clock__markings--14 {
+      transform: rotate(140deg); }
+    .clock__markings--15 {
+      transform: rotate(150deg); }
+    .clock__markings--16 {
+      transform: rotate(160deg); }
+    .clock__markings--17 {
+      transform: rotate(170deg); }
+    .clock__markings--18 {
+      transform: rotate(180deg); }
+    .clock__markings--19 {
+      transform: rotate(190deg); }
+    .clock__markings--20 {
+      transform: rotate(200deg); }
+    .clock__markings--21 {
+      transform: rotate(210deg); }
+    .clock__markings--22 {
+      transform: rotate(220deg); }
+    .clock__markings--23 {
+      transform: rotate(230deg); }
+    .clock__markings--24 {
+      transform: rotate(240deg); }
+    .clock__markings--25 {
+      transform: rotate(250deg); }
+    .clock__markings--26 {
+      transform: rotate(260deg); }
+    .clock__markings--27 {
+      transform: rotate(270deg); }
+    .clock__markings--28 {
+      transform: rotate(280deg); }
+    .clock__markings--29 {
+      transform: rotate(290deg); }
+    .clock__markings--30 {
+      transform: rotate(300deg); }
+    .clock__markings--31 {
+      transform: rotate(310deg); }
+    .clock__markings--32 {
+      transform: rotate(320deg); }
+    .clock__markings--33 {
+      transform: rotate(330deg); }
+    .clock__markings--34 {
+      transform: rotate(340deg); }
+    .clock__markings--35 {
+      transform: rotate(350deg); }
+    .clock__markings--36 {
+      transform: rotate(360deg); }
+    .clock__markings::after {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      width: 4px;
+      height: 12px;
+      background-color: white;
+      transform: translateX(-50%); }
+
+.clock__display {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  text-align: center; }
+  .clock__display--time {
+    font-size: 2em; }
+
+@keyframes rotate1 {
+  0% {
+    transform: rotate(-135deg); }
+  25% {
+    transform: rotate(45deg); }
+  50%, 75% {
+    transform: rotate(225deg); }
+  100% {
+    transform: rotate(405deg); } }
+@keyframes rotate2 {
+  0%, 25% {
+    transform: rotate(45deg); }
+  50% {
+    transform: rotate(225deg); }
+  75% {
+    transform: rotate(405deg); }
+  100% {
+    transform: rotate(585deg); } }
+@keyframes mask1 {
+  0% {
+    transform: rotate(0deg);
+    z-index: 3; }
+  25% {
+    z-index: 1; }
+  75% {
+    transform: rotate(180deg);
+    z-index: 3; } }
