@@ -6,12 +6,12 @@ $line-marking-width: $clock-border-size / 2;
 $line-marking-height: $clock-border-size * 1.5;
 
 // colors
-$main-color: #33334d;
+$main-color: #47476b;
 $font-color: white;
-$rotating-border-color: red;
+$rotating-border-color: #00e68a;
 
 // timings
-$transition-time: 5s;
+$transition-time: 3.2s;
 
 html, body {
   display: flex;
@@ -19,6 +19,8 @@ html, body {
   align-items: center;
   width: 100%;
   height: 100%;
+
+  background-color: darken($main-color, 15);
 }
 
 .tile {
@@ -27,8 +29,6 @@ html, body {
   align-items: center;
   width: $main-size;
   height: $main-size;
-
-  background-color: orange;
 }
 
 .clock {
@@ -138,10 +138,24 @@ html, body {
   color: $font-color;
 
   text-align: center;
+  font-size: 1.5em;
+  font-family: verdana helvetica;
 
   &--time {
-    font-size: 2em;
+    font-size: 3em;
   }
+
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__heart {
+    color: #e6005c;
+
+    animation: pulse $transition-time/5 ease-out infinite;
+  }
+
 }
 
 @keyframes rotate1 {
@@ -182,8 +196,22 @@ html, body {
   25% {
     z-index: 1;
   }
-  75% {
+  75%, 100% {
     transform: rotate(180deg);
     z-index: 3;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

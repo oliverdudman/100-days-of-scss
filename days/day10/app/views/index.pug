@@ -1,6 +1,7 @@
 html
   head
-  link(href="../css/main.css", rel="stylesheet")
+    link(href="https://use.fontawesome.com/releases/v5.0.13/css/all.css", rel="stylesheet", integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin="anonymous")
+    link(href="../css/main.css", rel="stylesheet")
   body
     div(class="tile")
       div(class="clock")
@@ -10,6 +11,10 @@ html
         - for (var x = 1; x <= 36; x++)
           div(class="clock__markings clock__markings--" + x)
         div(class="clock__display")
-          div(class="clock__display--labels") MON 15 JAN 2015
+          div(class="clock__display__labels") MON 15 JAN 2015
           div(class="clock__display--time") 11:42
-          div(class="clock__display--labels") 1024 KCAL
+          div(class="clock__display__labels")
+            div(class="clock__display__labels__container")
+              i(class="fas fa-heart clock__display__heart")
+              span  86                
+            div 1024 KCAL
