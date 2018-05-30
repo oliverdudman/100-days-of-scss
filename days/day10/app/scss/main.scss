@@ -4,14 +4,15 @@ $clock-border-size: $main-size / 100;
 $clock-inner-size: $clock-size - 2 * $clock-border-size;
 $line-marking-width: $clock-border-size / 2;
 $line-marking-height: $clock-border-size * 1.5;
+$rotating-line-size: $clock-border-size / 1.5;
 
 // colors
 $main-color: #47476b;
 $font-color: white;
-$rotating-border-color: #00e68a;
+$rotating-line-color: #00e68a;
 
 // timings
-$transition-time: 3.2s;
+$transition-time: 3s;
 
 html, body {
   display: flex;
@@ -33,6 +34,7 @@ html, body {
 
 .clock {
   position: relative;
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,32 +51,27 @@ html, body {
     box-sizing: border-box;
     width: 95%;
     height: 95%;
-    border: $clock-border-size / 1.5 solid $rotating-border-color;
+    border: $rotating-line-size solid $rotating-line-color;
     border-radius: 50%;
 
     &--1 {
-      z-index: 2;
+      z-index: 5;
 
-      // border: $clock-border-size / 1.5 solid red;
-      border-bottom: $clock-border-size / 1.5 solid transparent;
-      border-left: $clock-border-size / 1.5 solid transparent;
+      border-top: $rotating-line-size solid transparent;
+      border-right: $rotating-line-size solid transparent;
 
-      transform: rotate(-135deg);
-      clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
-      animation: rotate1 $transition-time linear infinite;
+      transform: rotate(45deg);
+      animation: rotate1 $transition-time linear infinite, rotate1-index $transition-time steps(1) infinite;
     }
 
     &--2 {
-      z-index: 1;
+      z-index: 2;
 
-      border-top: $clock-border-size / 1.5 solid transparent;
-      border-right: $clock-border-size / 1.5 solid transparent;
-
-      // background-color: pink;
+      border-bottom: $rotating-line-size solid transparent;
+      border-left: $rotating-line-size solid transparent;
 
       transform: rotate(45deg);
-      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
-      animation: rotate2 $transition-time linear infinite;
+      animation: rotate2 $transition-time linear infinite, rotate2-index $transition-time steps(1) infinite;
     }
   }
 
@@ -82,14 +79,12 @@ html, body {
     position: absolute;
 
     box-sizing: content-box;
-    width: 50%;
+    width: 49%;
     height: 96%;
-
-
 
     &--1 {
       right: 50%;
-      z-index: 2;
+      z-index: 4;
 
       border-radius: $clock-size/2 0px 0px $clock-size/2;
 
@@ -98,6 +93,19 @@ html, body {
       transform-origin: 100% 50%;
       transform: rotate(0deg);
       animation: mask1 $transition-time steps(1) infinite;
+    }
+
+    &--2 {
+      left: 50%;
+      z-index: 2;
+
+      border-radius: 0px $clock-size/2 $clock-size/2 0px;
+
+      background-color: $main-color;
+
+      transform-origin: 100% 50%;
+      transform: rotate(0deg);
+      animation: mask2 $transition-time steps(1) infinite;
     }
   }
 
@@ -160,45 +168,70 @@ html, body {
 
 @keyframes rotate1 {
   0% {
-    transform: rotate(-135deg);
-  }
-  25% {
-    transform: rotate(45deg);
-  }
-  50%, 75% {
-    transform: rotate(225deg);
+    transform: rotate(45);
   }
   100% {
-    transform: rotate(405deg);
+    transform: rotate(765deg);
+  }
+}
+
+@keyframes rotate1-index {
+  0% {
+    z-index: 4;
+  }
+  50% {
+    z-index: 2;
   }
 }
 
 @keyframes rotate2 {
-  0%, 25% {
+  0% {
     transform: rotate(45deg);
   }
-  50% {
-    transform: rotate(225deg);
-  }
-  75% {
-    transform: rotate(405deg);
-  }
   100% {
-    transform: rotate(585deg);
+    transform: rotate(765deg);
+  }
+}
+
+@keyframes rotate2-index {
+  0% {
+    z-index: 2;
+  }
+  50% {
+    z-index: 5;
   }
 }
 
 @keyframes mask1 {
   0% {
-    transform: rotate(0deg);
+    z-index: 5;
+  }
+  25% {
+    z-index: 3;
+  }
+  50% {
+    z-index: 1;
+  }
+  75% {
+    z-index: 3;
+  }
+}
+
+@keyframes mask2 {
+  0% {
     z-index: 3;
   }
   25% {
     z-index: 1;
   }
-  75%, 100% {
-    transform: rotate(180deg);
+  50% {
     z-index: 3;
+  }
+  75% {
+    z-index: 5;
+  }
+  100% {
+    z-index: 5;
   }
 }
 
