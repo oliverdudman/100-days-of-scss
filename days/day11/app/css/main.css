@@ -1,0 +1,120 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #70db70; }
+
+.container {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 10px; }
+
+.top {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 70%;
+  background-color: cyan; }
+
+.floor {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  height: 30%;
+  background-color: brown; }
+  .floor__marking {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: white; }
+    .floor__marking--1 {
+      left: 0%;
+      animation: floor 2s cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite; }
+    .floor__marking--2 {
+      left: 50%;
+      animation: floor 2s cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite; }
+    .floor__marking--3 {
+      left: 100%;
+      animation: floor 2s cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite; }
+
+.rotator {
+  position: absolute;
+  bottom: 14px;
+  left: 40%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: translateX(-50%) scaleX(3); }
+  .rotator--1 {
+    animation: rotate 2s linear infinite; }
+  .rotator--2 {
+    animation: rotate 2s linear 1s infinite; }
+
+.shoe-container {
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  width: 70px;
+  height: 10px;
+  transform: scaleX(0.3); }
+  .shoe-container--1 {
+    animation: rotate-reverse 2s linear infinite; }
+  .shoe-container--2 {
+    animation: rotate-reverse 2s linear 1s infinite; }
+
+.shoe {
+  position: absolute;
+  bottom: 0px;
+  left: -50%;
+  width: 220px;
+  height: 129px;
+  background-image: url("../images/converse-309846.svg");
+  background-size: cover;
+  transform-origin: 50% -100%; }
+  .shoe--1 {
+    animation: shoe 2s cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite; }
+  .shoe--2 {
+    animation: shoe 2s cubic-bezier(0.35, 0.51, 0.43, 0.84) 1s infinite; }
+
+.fade-in {
+  animation: fade-in 2s ease-out; }
+
+.sun {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: yellow; }
+
+@keyframes rotate {
+  0% {
+    transform: scaleX(3) rotate(0deg); }
+  100% {
+    transform: scaleX(3) rotate(360deg); } }
+@keyframes rotate-reverse {
+  0% {
+    transform: rotate(0deg) scaleX(0.3); }
+  100% {
+    transform: rotate(-360deg) scaleX(0.3); } }
+@keyframes shoe {
+  0%, 100% {
+    transform: rotate(-20deg); }
+  50% {
+    transform: rotate(30deg); } }
+@keyframes fade-in {
+  0%, 75% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes floor {
+  0% {
+    transform: translateX(300px); }
+  50% {
+    transform: translateX(0px); }
+  100% {
+    transform: translateX(-300px); } }

@@ -1,0 +1,194 @@
+$main-size: 600px;
+$rotation-size: $main-size / 20;
+$transition-time: 2s;
+$scaler: 3;
+$scaler-reverse: 0.3;
+
+html, body {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #70db70;
+}
+
+.container {
+  width: $main-size;
+  height: $main-size;
+  overflow: hidden;
+
+  border-radius: 10px;
+}
+
+.top {
+  position: relative;
+  z-index: 0;
+
+  width: 100%;
+  height: 70%;
+
+  background-color: cyan;
+}
+
+.floor {
+  position: relative;
+  z-index: 30;
+
+  width: 100%;
+  height: 30%;
+
+  background-color: brown;
+
+  &__marking {
+    position: absolute;
+
+    width: 1%;
+    height: 100%;
+
+    background-color: white;
+
+    &--1 {
+      left: 0%;
+
+      animation: floor $transition-time cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite;
+    }
+
+    &--2 {
+      left: 50%;
+
+      animation: floor $transition-time cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite;
+    }
+
+    &--3 {
+      left: 100%;
+
+      animation: floor $transition-time cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite;
+    }
+  }
+}
+
+.rotator {
+  position: absolute;
+  bottom: 14px;
+  left: 40%;
+
+  width: $rotation-size;
+  height: $rotation-size;
+  border-radius: 50%;
+
+  transform: translateX(-50%) scaleX($scaler);
+
+  &--1 {
+    animation: rotate $transition-time linear infinite;
+  }
+
+  &--2 {
+    animation: rotate $transition-time linear $transition-time/2 infinite;
+  }
+}
+
+.shoe-container {
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+
+  width: 70px;
+  height: 10px;
+
+  transform: scaleX($scaler-reverse);
+
+  &--1 {
+    animation: rotate-reverse $transition-time linear infinite;
+  }
+
+  &--2 {
+    animation: rotate-reverse $transition-time linear $transition-time/2 infinite;
+  }
+}
+
+.shoe {
+  position: absolute;
+  bottom: 0px;
+  left: -50%;
+  width: 220px;
+  height: 129px;
+  background-image: url("../images/converse-309846.svg");
+  background-size: cover;
+
+  transform-origin: 50% -100%;
+
+  &--1 {
+    animation: shoe $transition-time cubic-bezier(0.35, 0.51, 0.43, 0.84) infinite;
+  }
+
+  &--2 {
+    animation: shoe $transition-time cubic-bezier(0.35, 0.51, 0.43, 0.84) $transition-time/2 infinite;
+  }
+}
+
+.fade-in {
+  animation: fade-in $transition-time ease-out;
+}
+
+.sun {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+
+  width: $main-size/6;
+  height: $main-size/6;
+  border-radius: 50%;
+
+  background-color: yellow;
+}
+
+@keyframes rotate {
+  0% {
+    transform: scaleX($scaler) rotate(0deg);
+  }
+  100% {
+    transform: scaleX($scaler) rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  0% {
+    transform: rotate(0deg) scaleX($scaler-reverse);
+  }
+  100% {
+    transform: rotate(-360deg) scaleX($scaler-reverse);
+  }
+}
+
+@keyframes shoe {
+  0%, 100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes fade-in {
+  0%, 75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes floor {
+  0%{
+    transform: translateX($main-size/2);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-$main-size/2);
+  }
+}
