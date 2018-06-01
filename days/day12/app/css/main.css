@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:200,700");
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4dd2ff;
+  font-size: 16px; }
+
+.container {
+  width: 700px;
+  padding: 87.5px 70px;
+  border-radius: 10px;
+  color: white;
+  background-color: #00ace6;
+  font: lighter 3.5rem "Raleway", sans-serif; }
+
+.definition {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  width: 490px;
+  border-radius: 10px;
+  background-color: #003a4d;
+  font-size: 1.7rem;
+  text-align: left;
+  transform: translateX(-50%);
+  cursor: auto;
+  backface-visibility: hidden; }
+  .definition::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border: 10px solid transparent;
+    border-top: 10px solid #003a4d;
+    transform: translateX(-50%); }
+  .definition__pronunciation {
+    display: block;
+    padding: 8.75px 17.5px;
+    border-radius: 10px 10px 0px 0px;
+    color: #003a4d;
+    background-color: white; }
+  .definition__text {
+    display: block;
+    padding: 17.5px; }
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  background-color: #003a4d;
+  cursor: pointer; }
+  .highlight .definition {
+    transition: 0.7s;
+    opacity: 0;
+    visibility: hidden; }
+  .highlight:hover .definition {
+    opacity: 1;
+    transform: translate(-50%, 10%);
+    visibility: visible; }
+
+.quote {
+  position: relative;
+  z-index: 1;
+  text-align: center; }
+  .quote__text::before {
+    content: " ,, ";
+    position: absolute;
+    top: -12rem;
+    left: -3rem;
+    z-index: -1;
+    color: #4dd2ff;
+    font: 13rem georgia, arial;
+    transform: scale(-1, 1); }
+  .quote__text::after {
+    content: " ,, ";
+    position: absolute;
+    bottom: 3rem;
+    right: 0rem;
+    z-index: -1;
+    color: #4dd2ff;
+    font: 13rem georgia, arial; }
+  .quote__author {
+    font-size: 2rem;
+    text-align: right; }

@@ -1,0 +1,147 @@
+// sizes
+$main-size: 700px;
+$definition-padding: $main-size / 40;
+$border-radius: 10px;
+
+// colors
+$main-color: #00ace6;
+$lightest-color: white;
+$light-color: lighten($main-color, 20);
+$dark-color: darken($main-color, 30);
+
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,700');
+$font: 'Raleway', sans-serif;
+
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $light-color;
+
+  font-size: 16px;
+}
+
+.container {
+  width: $main-size;
+  padding: $main-size/8 $main-size/10;
+  border-radius: $border-radius;
+
+  color: $lightest-color;
+  background-color: $main-color;
+
+  font: lighter 3.5rem $font;
+}
+
+.definition {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+
+  width: $main-size * 0.7;
+  border-radius: $border-radius;
+
+  background-color: $dark-color;
+
+  font-size: 1.7rem;
+  text-align: left;
+
+  transform: translateX(-50%);
+  cursor: auto;
+  backface-visibility: hidden;// correct outline on hover issue
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    border: 10px solid transparent;
+    border-top: 10px solid $dark-color;
+
+    transform: translateX(-50%);
+  }
+
+  &__pronunciation {
+    display: block;
+    padding: $definition-padding/2 $definition-padding;
+    border-radius: $border-radius $border-radius 0px 0px;
+
+    color: $dark-color;
+    background-color: $lightest-color;
+  }
+
+  &__text {
+    display: block;
+    padding: $definition-padding;
+  }
+}
+
+.highlight {
+  position: relative;
+
+  display: inline-block;
+
+  background-color: $dark-color;
+
+  cursor: pointer;
+
+  & .definition {
+    transition: 0.7s;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &:hover .definition {
+    opacity: 1;
+    transform: translate(-50%, 10%);
+    visibility: visible;
+  }
+}
+
+.quote {
+  position: relative;
+  z-index: 1;
+
+  text-align: center;
+
+  &__text {
+    &::before {
+      content: " ,, ";
+      position: absolute;
+      top: -12rem;
+      left: -3rem;
+      z-index: -1;
+
+      color: $light-color;
+
+      font: 13rem georgia, arial;
+
+      transform: scale(-1, 1);
+    }
+
+    &::after {
+      content: " ,, ";
+      position: absolute;
+      bottom: 3rem;
+      right: 0rem;
+      z-index: -1;
+
+      color: $light-color;
+
+      font: 13rem georgia, arial;
+    }
+  }
+
+  &__author {
+    font-size: 2rem;
+    text-align: right;
+  }
+}
