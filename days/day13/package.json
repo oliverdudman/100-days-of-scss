@@ -1,0 +1,17 @@
+{
+  "name": "pug_js",
+  "version": "1.0.0",
+  "description": "pug with js template 100 days of scss",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oliver dudman",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-ruby-sass": "^3.0.0"
+  }
+}
