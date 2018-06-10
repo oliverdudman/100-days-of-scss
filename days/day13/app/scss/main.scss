@@ -1,6 +1,7 @@
 // sizes
 $main-size: 600px;
 $tile-size: $main-size / 2.1;
+$font-main-size: $main-size / 37;
 
 // colors
 $main-color: #3399ff;
@@ -10,13 +11,20 @@ $font-color: white;
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 $main-font: "Montserrat", sans-serif;
 
+//transitions
+$contact-active-trans: 1s ease-in-out;
+
 html, body {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-width: $main-size;
+  min-height: $main-size;
   height: 100%;
   margin: 0px;
+
+  font-size: $font-main-size;
 }
 
 .container {
@@ -35,18 +43,40 @@ html, body {
 }
 
 .contact {
+  $c: &;
   position: absolute;
   top: 0px;
-  z-index: 1;
 
   width: 100%;
   height: 100%;
 
-  color: $font-color;
+  &.active {
+    #{$c}__bottom {
+      bottom: 0px;
+    }
+
+    #{$c}__close {
+      top: 1em;
+
+      transition: $contact-active-trans .7s;
+    }
+
+    #{$c}__top {
+      top: 0px;
+    }
+
+    #{$c}__profile-image {
+      top: 45%;
+
+      transition: $contact-active-trans .5s;
+    }
+  }
+
 
   &__bottom {
     position: absolute;
-    bottom: 0px;
+    bottom: -55%;
+    z-index: 1;
 
     display: flex;
     justify-content: space-around;
@@ -63,6 +93,8 @@ html, body {
     font-size: 1.5em;
     font-family: $main-font;
 
+    transition: $contact-active-trans .4s;
+
     &__icon {
       margin: 0.3em;
       padding: 0.5em;
@@ -71,40 +103,30 @@ html, body {
 
       cursor: pointer;
       transition: 0.4s;
-
-      &:hover {
-        color: $main-color;
-        background-color: $font-color;
-      }
     }
   }
 
   &__close {
     position: absolute;
-    top: 1em;
+    top: -25%;
     right: 1em;
     z-index: 2;
 
-    padding: 0.5em 0.7em;
-    border-radius: 50%;
+    transition: $contact-active-trans;
 
-    background-color: $main-color;
-    color: $font-color;
+    &__icon {
+      padding: 0.5em 0.7em;
+      border-radius: 50%;
 
-    font-size: 2em;
+      font-size: 2em;
 
-    cursor: pointer;
-    transition: 0.4s;
-
-    &:hover {
-      background-color: $font-color;
-      color: $main-color;
+      cursor: pointer;
     }
   }
 
   &__profile-image {
     position: absolute;
-    top: 45%;
+    top: -20%;
     left: 50%;
     z-index: 2;
 
@@ -114,14 +136,30 @@ html, body {
     border-radius: 50%;
 
     transform: translate(-50%, -50%);
+    transition: $contact-active-trans 0.2s;
   }
 
   &__top {
     position: absolute;
-    top: 0px;
+    top: -45%;
+    z-index: 1;
 
     width: 100%;
     height: 45%;
+
+    transition: $contact-active-trans .4s;
+  }
+}
+
+.icon-color {
+  background-color: $main-color;
+  color: $font-color;
+
+  transition: 0.4s;
+
+  &:hover {
+    background-color: $font-color;
+    color: $main-color;
   }
 }
 
