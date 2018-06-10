@@ -71,7 +71,7 @@ html, body {
   left: -50%;
   width: 220px;
   height: 129px;
-  background-image: url("../images/converse-309846.svg");
+  background-image: url("https://res.cloudinary.com/do4hzaoh5/image/upload/v1528644304/100_days_of_scss/day11/shoes.svg");
   background-size: cover;
   transform-origin: 50% -100%; }
   .shoe--1 {
