@@ -1,0 +1,17 @@
+doctype html
+
+html
+  head
+  link(href="../css/main.css", rel="stylesheet")
+  body
+    div(class="flip-container")
+      div(class="flipper")
+        div(class="animations-container animations-container--front")
+          div(class="bike")
+          div(class="road")
+            - for(var x = 1; x <=10; x++)
+              div(class="road__marking road__marking--" + x)
+        div(class="animations-container animations-container--back")
+          div(class="helicopter")
+          - for(var x = 1; x <=10; x++)
+            div(class="wind wind--" + x)
