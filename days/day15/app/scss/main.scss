@@ -1,0 +1,178 @@
+// sizes
+$main-size: 600px;
+$input-size: $main-size / 5;
+
+// colors
+$btn-color: #66b3ff;
+
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Lato');
+$main-font: 'Lato', sans-serif;
+
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+
+  background: linear-gradient(45deg, red, darken($btn-color, 15));
+
+  font-family: $main-font;
+}
+
+.container {
+  width: $main-size;
+  height: $main-size;
+
+  background-color: white;
+}
+
+.header {
+  text-align: center;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 80%;
+
+  &__btn {
+    padding: 0.5em 1em;
+    border-radius: 10px;
+
+    background-color: $btn-color;
+
+    font-size: 2em;
+
+    box-shadow: 0px 3px darken($btn-color, 20);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 3px darken($btn-color, 20), 0px 0px 10px $btn-color;
+    }
+  }
+
+  &__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $input-size;
+    height: $input-size;
+
+    background-color: transparent;
+    color: #737373;
+
+    &__ctrl {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      &.dragged-on::after {
+        // border: 2px dashed blue;
+        background-color: #cccccc;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0px;
+
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        background-color: white;
+        border: 2px dashed #a6a6a6;
+
+        opacity: 1;
+      }
+
+      &::before {
+        // stops images from being clicked on
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 1000;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+      }
+    }
+
+    &__image {
+      position: absolute;
+
+      font-size: 1em;
+
+      &--upload {
+        &::after {
+          font-size: 3em;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f382";
+        }
+
+      }
+
+      &--sync {
+        animation: rotate 3.5s ease-in-out;
+
+        &::after {
+          font-size: 3em;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f2f1";
+        }
+      }
+
+      &--done {
+        animation: done .5s;
+
+        &::after {
+          font-size: 3em;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f00c";
+        }
+      }
+
+
+    }
+
+  }
+}
+
+@keyframes rotate {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes done {
+  0%, 10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

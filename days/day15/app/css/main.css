@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  background: linear-gradient(45deg, red, #1a8dff);
+  font-family: "Lato", sans-serif; }
+
+.container {
+  width: 600px;
+  height: 600px;
+  background-color: white; }
+
+.header {
+  text-align: center; }
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 80%; }
+  .upload__btn {
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    background-color: #66b3ff;
+    font-size: 2em;
+    box-shadow: 0px 3px #0080ff;
+    cursor: pointer; }
+    .upload__btn:hover {
+      box-shadow: 0px 3px #0080ff, 0px 0px 10px #66b3ff; }
+  .upload__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    color: #737373; }
+    .upload__input__ctrl {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .upload__input__ctrl.dragged-on::after {
+        background-color: #cccccc; }
+      .upload__input__ctrl::after {
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: white;
+        border: 2px dashed #a6a6a6;
+        opacity: 1; }
+      .upload__input__ctrl::before {
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        background-color: transparent; }
+    .upload__input__image {
+      position: absolute;
+      font-size: 1em; }
+      .upload__input__image--upload::after {
+        font-size: 3em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f382"; }
+      .upload__input__image--sync {
+        animation: rotate 3.5s ease-in-out; }
+        .upload__input__image--sync::after {
+          font-size: 3em;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f2f1"; }
+      .upload__input__image--done {
+        animation: done .5s; }
+        .upload__input__image--done::after {
+          font-size: 3em;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f00c"; }
+
+@keyframes rotate {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1;
+    transform: rotate(0deg); }
+  90% {
+    opacity: 1; }
+  95%, 100% {
+    opacity: 0;
+    transform: rotate(360deg); } }
+@keyframes done {
+  0%, 10% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
