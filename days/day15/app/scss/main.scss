@@ -3,7 +3,13 @@ $main-size: 600px;
 $input-size: $main-size / 5;
 
 // colors
-$btn-color: #66b3ff;
+$main-color: #00b8e6;
+$secondary-color: #5cd65c;
+$btn-color: #00b8e6;
+$light-color: lighten($btn-color, 20);
+$dark-grey: #737373;
+$medium-grey: lighten($dark-grey, 15);
+$light-grey: lighten($dark-grey, 30);
 
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Lato');
@@ -18,7 +24,7 @@ html, body {
   height: 100%;
   margin: 0px;
 
-  background: linear-gradient(45deg, red, darken($btn-color, 15));
+  background: linear-gradient(45deg, $secondary-color, darken($main-color, 15));
 
   font-family: $main-font;
 }
@@ -26,12 +32,40 @@ html, body {
 .container {
   width: $main-size;
   height: $main-size;
+  border-radius: 10px;
 
   background-color: white;
+
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 
 .header {
+  color: $dark-grey;
   text-align: center;
+}
+
+.loading-bar {
+  position: relative;
+  width: 100%;
+  height: 3px;
+
+  background-color: $light-grey;
+
+  &.active::after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $light-color;
+
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: bar 3.5s linear forwards;
+  }
 }
 
 .upload {
@@ -42,10 +76,12 @@ html, body {
   height: 80%;
 
   &__btn {
+    width: $main-size / 2.5;
     padding: 0.5em 1em;
     border-radius: 10px;
 
     background-color: $btn-color;
+    color: white;
 
     font-size: 2em;
 
@@ -65,7 +101,6 @@ html, body {
     height: $input-size;
 
     background-color: transparent;
-    color: #737373;
 
     &__ctrl {
       position: relative;
@@ -73,22 +108,22 @@ html, body {
       height: 100%;
 
       &.dragged-on::after {
-        // border: 2px dashed blue;
-        background-color: #cccccc;
+        background-color: lighten($light-grey, 15);
       }
 
       &::after {
         content: "";
         position: absolute;
         top: 0%;
-        left: 0px;
+        left: 0%;
 
         width: 100%;
         height: 100%;
         box-sizing: border-box;
 
         background-color: white;
-        border: 2px dashed #a6a6a6;
+        border: 2px dashed $medium-grey;
+        border-radius: 5px;
 
         opacity: 1;
       }
@@ -111,41 +146,37 @@ html, body {
     &__image {
       position: absolute;
 
+      color: $dark-grey;
       font-size: 1em;
 
-      &--upload {
-        &::after {
-          font-size: 3em;
-          font-family: "Font Awesome 5 Free";
-          font-weight: 900;
-          content: "\f382";
-        }
-
+      &--upload::after {
+        color: $light-grey;
+        font-size: 3em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f382";
       }
 
-      &--sync {
+      &--sync::after {
+        display: block;
+        color: $light-grey;
+        font-size: 3em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f2f1";
+
         animation: rotate 3.5s ease-in-out;
-
-        &::after {
-          font-size: 3em;
-          font-family: "Font Awesome 5 Free";
-          font-weight: 900;
-          content: "\f2f1";
-        }
       }
 
-      &--done {
+      &--done::after {
+        color: $light-grey;
+        font-size: 3em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f00c";
+
         animation: done .5s;
-
-        &::after {
-          font-size: 3em;
-          font-family: "Font Awesome 5 Free";
-          font-weight: 900;
-          content: "\f00c";
-        }
       }
-
-
     }
 
   }
@@ -162,17 +193,23 @@ html, body {
   90% {
     opacity: 1;
   }
-  95%, 100% {
+  100% {
     opacity: 0;
     transform: rotate(360deg)
   }
 }
 
 @keyframes done {
-  0%, 10% {
+  0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes bar {
+  100% {
+    transform: scaleX(1);
   }
 }
