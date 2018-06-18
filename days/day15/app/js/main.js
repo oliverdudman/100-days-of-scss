@@ -17,22 +17,22 @@ function resetListeners() {
     e.stopPropagation();
   });
   $ctrl.on("dragover", function() {
-    $ctrl.addClass("dragged-on");
+    $image.addClass("dragged-on");
   });
   $ctrl.on("dragleave drop", function() {
-    $ctrl.removeClass("dragged-on");
+    $image.removeClass("dragged-on");
   });
   $ctrl.on("drop", function(e) {
-    addFile(e.originalEvent.dataTransfer);
+    addFile(e.originalEvent.dataTransfer.files[0].name);
   });
   $ctrl.on("change", function(e) {
-    addFile($(this)[0]);
+    if ($(this)[0].files[0]) addFile($(this)[0].files[0].name); //only update if file has been selected
   });
 }
 
-function addFile(data) {
+function addFile(name) {
   $image.removeClass("upload__input__image--upload");
-  $image.html(data.files[0].name);
+  $image.html(name);
 
   $btn.one("click", function() {
     $ctrl.off("drag dragover dragenter dragleave drop change");

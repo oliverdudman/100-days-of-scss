@@ -1,6 +1,6 @@
 // sizes
 $main-size: 600px;
-$input-size: $main-size / 5;
+$input-size: $main-size / 4;
 
 // colors
 $main-color: #00b8e6;
@@ -14,6 +14,10 @@ $light-grey: lighten($dark-grey, 30);
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Lato');
 $main-font: 'Lato', sans-serif;
+
+// misc
+$btn-border-top: 3px solid darken($btn-color, 10);
+$btn-border-bottom: 3px solid darken($btn-color, 20);
 
 html, body {
   display: flex;
@@ -78,6 +82,10 @@ html, body {
   &__btn {
     width: $main-size / 2.5;
     padding: 0.5em 1em;
+    border-top: $btn-border-top;
+    border-left: $btn-border-top;
+    border-bottom: $btn-border-bottom;
+    border-right: $btn-border-bottom;
     border-radius: 10px;
 
     background-color: $btn-color;
@@ -85,15 +93,26 @@ html, body {
 
     font-size: 2em;
 
-    box-shadow: 0px 3px darken($btn-color, 20);
     cursor: pointer;
 
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 10px 3px $btn-color;
+    }
+
     &:hover {
-      box-shadow: 0px 3px darken($btn-color, 20), 0px 0px 10px $btn-color;
+      border-top: $btn-border-bottom;
+      border-left: $btn-border-bottom;
+      border-bottom: $btn-border-top;
+      border-right: $btn-border-top;
+
+      background-color: darken($btn-color, 3);
     }
   }
 
   &__input {
+    position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,56 +121,45 @@ html, body {
 
     background-color: transparent;
 
+    &:focus-within &__image, &__image.dragged-on {
+      background-color: lighten($light-grey, 15);
+    }
+
     &__ctrl {
-      position: relative;
+      position: absolute;
       width: 100%;
       height: 100%;
+      z-index: 100;
+      opacity: 0;
+
+      &:focus {
+        outline: none;
+      }
 
       &.dragged-on::after {
         background-color: lighten($light-grey, 15);
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: 0%;
-
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-
-        background-color: white;
-        border: 2px dashed $medium-grey;
-        border-radius: 5px;
-
-        opacity: 1;
-      }
-
-      &::before {
-        // stops images from being clicked on
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        z-index: 1000;
-
-        width: 100%;
-        height: 100%;
-
-        background-color: transparent;
       }
     }
 
     &__image {
       position: absolute;
 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed $medium-grey;
+      border-radius: 5px;
+
       color: $dark-grey;
+      background-color: white;
+
       font-size: 1em;
 
       &--upload::after {
         color: $light-grey;
-        font-size: 3em;
+        font-size: 4em;
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         content: "\f382";
@@ -160,7 +168,7 @@ html, body {
       &--sync::after {
         display: block;
         color: $light-grey;
-        font-size: 3em;
+        font-size: 4em;
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         content: "\f2f1";
@@ -170,12 +178,12 @@ html, body {
 
       &--done::after {
         color: $light-grey;
-        font-size: 3em;
+        font-size: 4em;
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         content: "\f00c";
 
-        animation: done .5s;
+        animation: done .8s;
       }
     }
 
@@ -200,10 +208,10 @@ html, body {
 }
 
 @keyframes done {
-  0% {
+  0%, 10% {
     opacity: 0;
   }
-  100% {
+  90%, 100% {
     opacity: 1;
   }
 }
