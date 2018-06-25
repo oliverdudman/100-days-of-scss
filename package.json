@@ -1,7 +1,7 @@
 {
-  "name": "html_plain",
+  "name": "100 days of scss",
   "version": "1.0.0",
-  "description": "day12 100 days of scss",
+  "description": "100 days of scss developement and testing files",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +11,7 @@
   "devDependencies": {
     "browser-sync": "^2.24.4",
     "gulp": "^3.9.1",
+    "gulp-pug": "^4.0.1",
     "gulp-ruby-sass": "^3.0.0"
   }
 }
