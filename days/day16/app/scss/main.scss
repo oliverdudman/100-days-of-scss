@@ -1,0 +1,230 @@
+$main-size: 600px;
+$circle-size: $main-size / 4;
+
+// colors
+$base-color: #ff8533;
+$shape-color: white;
+
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  background-color: lighten($base-color, 20);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $main-size;
+  height: $main-size;
+  border-radius: 10px;
+
+  background-color: $base-color;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+}
+
+.circle {
+  position: absolute;
+
+  width: $circle-size;
+  height: $circle-size;
+  border-radius: 50%;
+
+  background-color: $shape-color;
+
+  &__flare {
+    width: $circle-size;
+    height: $circle-size;
+    border: 2px solid $shape-color;
+    border-radius: 50%;
+
+    animation: scale 3s linear infinite;
+  }
+}
+
+.octagon {
+  &__shape {
+    position: absolute;
+    width: $circle-size * 1.1;
+    height: $circle-size * 1.1;
+
+    animation: octagon 3s ease-in-out infinite;
+
+    polygon {
+      fill: $shape-color;
+    }
+  }
+
+  &--flare-animation {
+    position: absolute;
+    width: $circle-size * 1.1;
+    height: $circle-size * 1.1;
+    animation: scale 3s ease-in infinite;
+  }
+
+  &__flare {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      z-index: 2;
+
+      width: 3%;
+      height: 20%;
+      background-color: $shape-color;
+
+      transform: translateX(-50%);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -30%;
+      left: 50%;
+      z-index: 2;
+
+      width: 3%;
+      height: 20%;
+      background-color: $shape-color;
+
+      transform: translateX(-50%);
+    }
+
+    &--1 {
+      transform: rotate(0deg);
+    }
+
+    &--2 {
+      transform: rotate(45deg);
+    }
+
+    &--3 {
+      transform: rotate(90deg);
+    }
+
+    &--4 {
+      transform: rotate(135deg);
+    }
+  }
+}
+
+.triangle {
+  &__shape {
+
+    position: absolute;
+    width: $circle-size * 1.2;
+    height: $circle-size * 1.2;
+
+    animation: triangle 3s ease-in-out infinite;
+
+    polygon {
+      fill: $shape-color;
+    }
+  }
+
+  &--flare-animation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $circle-size;
+    height: $circle-size;
+  }
+
+
+  &__flare {
+    position: absolute;
+    top: $circle-size/6;
+
+    width: 5px;
+    height: $circle-size;
+
+    &::after {
+      $height: 20%;
+
+      content: "";
+      position: absolute;
+      top: -($height + 40);
+      left: 50%;
+      z-index: 2;
+
+      width: 5px;
+      height: 50px;
+      background-color: white;
+
+      transform: translateX(-50%);
+      animation: flare-out 3s linear infinite;
+    }
+
+    &--1 {
+      transform: rotate(0deg);
+    }
+
+    &--2 {
+      transform: rotate(120deg);
+    }
+
+    &--3 {
+      transform: rotate(240deg);
+    }
+  }
+}
+
+@keyframes scale {
+  0%,50% {
+    transform: scale(0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes flare-out {
+  0%, 75% {
+    transform: translate(-50%, 200%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+@keyframes triangle {
+  0%, 30% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  85%, 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes octagon {
+  0%, 30% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  85%, 100% {
+    transform: scale(1);
+  }
+}
