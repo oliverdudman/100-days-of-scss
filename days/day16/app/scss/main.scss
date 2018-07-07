@@ -127,7 +127,6 @@ html, body {
 
 .triangle {
   &__shape {
-
     position: absolute;
     width: $circle-size * 1.2;
     height: $circle-size * 1.2;
@@ -255,7 +254,6 @@ html, body {
     transform: translate(-50%, -$triangle-flare-dist) scale(1.4);
     opacity: 0;
   }
-
 }
 
 @keyframes octagon {
