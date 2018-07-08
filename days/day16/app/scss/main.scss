@@ -183,8 +183,11 @@ html, body {
   0% {
     transform: translateY(-$main-size);
   }
+  5% {
+    transform: translateY($main-size/15) scale(1.1,0.8);
+  }
   10% {
-    transform: translateY($main-size/15);
+    transform: translateY(-$main-size/40) scale(1);
   }
   15%{
     transform: translate(0) scale(1);
