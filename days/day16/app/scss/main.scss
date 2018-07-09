@@ -7,7 +7,7 @@ $base-color: #ff8533;
 $shape-color: white;
 
 // timings
-$anim-duration: 6.5s;
+$anim-duration: 5s;
 
 html, body {
   display: flex;
@@ -199,7 +199,7 @@ html, body {
     transform: translate3d(0,0,0) scale(0);
   }
   80% {
-    transform: translate3d(0,0,0) scale(1.3);
+    transform: translate3d(0,0,0) scale(1.4);
   }
   85%, 90% {
     transform: scale(1);
@@ -222,7 +222,7 @@ html, body {
     opacity: 1;
   }
   90%, 100% {
-    transform: scale(2);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
@@ -232,7 +232,7 @@ html, body {
     transform: scale(0);
   }
   55% {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
   60%, 65% {
     transform: scale(1);
@@ -264,7 +264,7 @@ html, body {
     transform: scale(0);
   }
   30% {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
   35%, 40% {
     transform: scale(1);
